@@ -5,8 +5,9 @@ var PI = 3.14159265358979323846;
 var TEXT_DY = 4;
 var FONT_SIZE = 11;
 
+var MAX_CNT = 2000;
 var MAX_VERTICES = 100;
-var MAX_COLORS = 20;
+var MAX_COLORS = 100;
 var MAX_ROWS = 10;
 var MAX_COLUMNS = 10;
 

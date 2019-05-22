@@ -25,8 +25,8 @@ function showOnclick() {
     rows = getIntField('rowsPerPage');
     columns = getIntField('columnsPerPage');
     
-    if (!validateRange(2, 20, n, 'sp1') ||
-        !validateRange(1, 20, c, 'sp2') ||
+    if (!validateRange(2, MAX_VERTICES, n, 'sp1') ||
+        !validateRange(2, MAX_COLORS, c, 'sp2') ||
         !validateRange(1, MAX_ROWS, rows, 'sp3') ||
         !validateRange(1, MAX_COLUMNS, columns, 'sp4')) {
     
@@ -76,7 +76,9 @@ function nextPageOnclick() {
         rows = getIntField('rowsPerPage');
         columns = getIntField('columnsPerPage');
         
-        if (!validateRange(1, MAX_ROWS, rows, 'sp3') ||
+        if (!validateRange(2, MAX_VERTICES, n, 'sp1') ||
+            !validateRange(2, MAX_COLORS, c, 'sp2') ||
+            !validateRange(1, MAX_ROWS, rows, 'sp3') ||
             !validateRange(1, MAX_COLUMNS, columns, 'sp4')) {
         
             return;

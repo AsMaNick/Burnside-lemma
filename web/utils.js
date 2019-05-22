@@ -71,6 +71,22 @@ function showColorNumbers() {
     return document.getElementById('showColorNumbers').checked;
 }
 
+function splitBigNumber(x, digits) {
+    a = x.toString().split('');
+    var res = '';
+    for (var i = a.length - 1; i >= 0; i -= digits) {
+        var s = '';
+        for (var j = Math.max(0, i - digits + 1); j <= i; ++j) {
+            s += a[j];
+        }
+        if (res != '') {
+            s += ' ';
+        }
+        res = s + res;
+    }
+    return res;
+}
+
 var cnt_logs = 0;
 
 function writeLog(message) {

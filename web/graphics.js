@@ -96,7 +96,7 @@ function redraw_partitions(rows, columns, data) {
               
             arcs.append('path')
                 .attr('d', arc)
-                .attr('fill', function(d) { console.log(d); return COLORS[d.index % COLORS.length] } );
+                .attr('fill', function(d) { return COLORS[d.index % COLORS.length] } );
                 
                     
             if (showColorNumbers()) {
