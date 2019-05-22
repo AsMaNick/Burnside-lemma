@@ -1,6 +1,6 @@
 var BIG_RADIUS = 100;
 var SMALL_RADIUS = 8;
-var MARGIN = 20;
+var MARGIN = 40;
 var PI = 3.14159265358979323846;
 var TEXT_DY = 4;
 var FONT_SIZE = 11;

@@ -57,14 +57,17 @@ function showOnclick() {
 
 function reflectionsOnchange() {
     change_params = true;
+    document.getElementById('startFrom').value = '1';
 }
 
 function verticesOnchange() {
     change_params = true;
+    document.getElementById('startFrom').value = '1';
 }
 
 function colorsOnchange() {
     change_params = true;
+    document.getElementById('startFrom').value = '1';
 }
 
 function showColorNumbersOnchange() {
@@ -125,6 +128,7 @@ function prevPageOnclick() {
 
 function taskOnchange() {
     change_params = true;
+    document.getElementById('startFrom').value = '1';
     task = getField('task');
     if (task == 'Colorings') {
         document.getElementById('verticesLabel').innerHTML = 'vertices:';
