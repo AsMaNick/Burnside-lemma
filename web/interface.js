@@ -25,6 +25,9 @@ function showOnclick() {
     rows = getIntField('rowsPerPage');
     columns = getIntField('columnsPerPage');
     
+    if (task == 'Splittings' && !validateRange(2, MAX_ARCS, n, 'sp1')) {
+        return;
+    }    
     if (!validateRange(2, MAX_VERTICES, n, 'sp1') ||
         !validateRange(2, MAX_COLORS, c, 'sp2') ||
         !validateRange(1, MAX_ROWS, rows, 'sp3') ||

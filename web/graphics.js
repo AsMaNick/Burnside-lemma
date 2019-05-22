@@ -101,7 +101,7 @@ function redraw_partitions(rows, columns, data) {
                     
             if (showColorNumbers()) {
                 arcs.append('text')
-                    .attr('transform', function(d) { return 'translate({0})'.format(arc.centroid(d)); } )
+                    .attr('transform', function(d) { var center = arc.centroid(d); return 'translate({0},{1})'.format(center[0], center[1] + 3); } )
                     .attr('text-anchor', 'middle')
                     .style('font-size', FONT_SIZE)
                     .style('font-weight', 'bold')
@@ -121,5 +121,3 @@ function redraw() {
         redraw_partitions(last_rows, last_columns, last_data);
     }
 }
-
-//redraw_colorings(2, 3, [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], [1], [3], [2, 5]]);
