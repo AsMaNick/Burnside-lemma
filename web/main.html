@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+	<meta charset='utf-8'>
+	<script src='third-party/d3.v4.min.js'></script>
+	<script src='third-party/d3-3d.js'></script>
+	<script src='third-party/jquery-latest.js'></script>
+	<link rel='stylesheet' href='styles.css'>
+</head>
+
+<body onload=''>
+	<div class='canvas' id='canvas'>
+		<button style='position: absolute; top: 190px; left: 3px; width: 30px; height: 30px;' onclick='scaleUpOnclick()'> + </button>
+		<button style='position: absolute; top: 230px; left: 3px; width: 30px; height: 30px;' onclick='scaleDownOnclick()'> - </button>
+		<svg width='1' height='1'>
+        </svg>
+	</div>
+		
+		<aside style='float: right; vertical-align: top; padding: 10px; border: solid 1px black;'>
+			<div style='text-alight: top;'>
+				<legend>Task parameters:</legend>
+				<br>
+				
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'> Task: </span>
+				<select id='' size='1' style='height: 23px'>
+					<option>Colorings</option>
+					<option>Splittings</option>
+				</select>
+                <br>
+                <br>
+                
+                <input type='checkbox' style='width: 15px' onchange='autoRotationOchange()' id=''> Use reflections </input>
+                <br>
+                <br>
+                
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>vertices:</span>
+                <input type='number' id='' style='width: 175px; height: 18px' min='2' max='100' value='4'> 
+                <br>
+                <span class='error' id='sp1'></span>
+                <br>
+                
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>colors:</span>
+                <input type='number' id='' style='width: 186px; height: 18px' min='2' max='100' value='3'> 
+                <br>
+                <span class='error' id='sp2'></span>
+                <br>
+			</div>
+			
+			<div>
+				<legend>Visualization:</legend>
+				<br>
+				
+				<span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>show rows per page:</span>
+                <input type='number' id='' style='width: 92px; height: 18px' min='2' max='10' value='2'> 
+                <br>
+                <span class='error' id='sp3'></span>
+                <br>
+                
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>show columns per page:</span>
+                <input type='number' id='' style='width: 67px; height: 18px' min='2' max='10' value='3'> 
+                <br>
+                <span class='error' id='sp4'></span>
+                <br>
+                
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>start from:</span>
+                <input type='number' id='' style='width: 160px; height: 18px' min='2' max='100' value='1'> 
+                <br>
+                <span class='error' id='sp5'></span>
+                <br>
+                
+				<button id='visualize_button' onclick='visualizeOnClick()'> Show </button> 
+                <br>
+				<span class='error' id='sp6'></span>
+                <br>
+                
+                <button id='visualize_button' onclick='visualizeOnClick()'> Next page </button> 
+                <br>
+				<span class='error' id='sp7'></span>
+			</div>
+		</aside>
+		
+		<br>
+		<br>
+		<legend> Operations list: </legend>
+		<div class='log'>
+		</div>
+</body>
+
+<script type='text/javascript' src='settings.js'> </script>
+<script type='text/javascript' src='utils.js'> </script>
+<script type='text/javascript' src='interface.js'> </script>
+<script type='text/javascript' src='graphics.js'> </script>
