@@ -51,18 +51,68 @@ function showOnclick() {
     redraw_colorings(rows, columns, data);
 }
 
-function onchangeReflections() {
+function reflectionsOnchange() {
     change_params = true;
 }
 
-function onchangeVertices() {
+function verticesOnchange() {
     change_params = true;
 }
 
-function onchangeColors() {
+function colorsOnchange() {
     change_params = true;
 }
 
-function onchangeShowColorNumbers() {
+function showColorNumbersOnchange() {
     redraw();
+}
+
+function nextPageOnclick() {
+    if (!change_params) {
+        rows = getIntField('rowsPerPage');
+        columns = getIntField('columnsPerPage');
+        
+        if (!validateRange(1, MAX_ROWS, rows, 'sp3') ||
+            !validateRange(1, MAX_COLUMNS, columns, 'sp4')) {
+        
+            return;
+        }
+        
+        var cnt = rows * columns;
+        var start = getIntField('startFrom');
+        if (start + cnt <= last_generated_data.length) {
+            start += cnt;
+            document.getElementById('startFrom').value = start.toString();
+            showOnclick();
+        } else {
+            showError('sp7', 'This is the last page');
+        }
+    } else {
+        showError('sp7', 'Click "Show" button first');
+    }
+}
+
+function prevPageOnclick() {
+    if (!change_params) {
+        rows = getIntField('rowsPerPage');
+        columns = getIntField('columnsPerPage');
+        
+        if (!validateRange(1, MAX_ROWS, rows, 'sp3') ||
+            !validateRange(1, MAX_COLUMNS, columns, 'sp4')) {
+        
+            return;
+        }
+        
+        var cnt = rows * columns;
+        var start = getIntField('startFrom');
+        if (start > 1) {
+            start = Math.max(1, start - cnt);
+            document.getElementById('startFrom').value = start.toString();
+            showOnclick();
+        } else {
+            showError('sp7', 'This is the first page');
+        }
+    } else {
+        showError('sp7', 'Click "Show" button first');
+    }
 }

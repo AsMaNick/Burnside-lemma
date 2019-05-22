@@ -28,18 +28,18 @@
                 <br>
                 <br>
                 
-                <input type='checkbox' style='width: 15px' onchange='onchangeReflections()' id='useReflections'>Use reflections</input>
+                <input type='checkbox' style='width: 15px' onchange='reflectionsOnchange()' id='useReflections'>Use reflections</input>
                 <br>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>vertices:</span>
-                <input type='number' id='vertices' style='width: 175px; height: 18px' onchange='onchangeVertices()' min='2' max='100' value='4'> 
+                <input type='number' id='vertices' style='width: 175px; height: 18px' onchange='verticesOnchange()' min='2' max='100' value='4'> 
                 <br>
                 <span class='error' id='sp1'></span>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>colors:</span>
-                <input type='number' id='colors' style='width: 186px; height: 18px' onchange='onchangeColors()' min='1' max='20' value='3'> 
+                <input type='number' id='colors' style='width: 186px; height: 18px' onchange='colorsOnchange()' min='1' max='20' value='3'> 
                 <br>
                 <span class='error' id='sp2'></span>
                 <br>
@@ -67,7 +67,7 @@
                 <span class='error' id='sp5'></span>
                 <br>
                 
-                <input type='checkbox' style='width: 15px' onchange='onchangeShowColorNumbers()' id='showColorNumbers'>Show color numbers</input>
+                <input type='checkbox' style='width: 15px' onchange='showColorNumbersOnchange()' id='showColorNumbers'>Show color numbers</input>
                 <br>
                 <br>
                 
@@ -76,7 +76,8 @@
 				<span class='error' id='sp6'></span>
                 <br>
                 
-                <button id='nextPageButton' onclick='nextPageOnclick()'> Next page </button> 
+                <button id='prevPageButton' onclick='prevPageOnclick()' style='width: 123px'> Prev page </button> 
+                <button id='nextPageButton' onclick='nextPageOnclick()' style='width: 123px'> Next page </button> 
                 <br>
 				<span class='error' id='sp7'></span>
 			</div>
