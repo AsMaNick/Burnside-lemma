@@ -31,7 +31,7 @@ function redraw_colorings(rows, columns, data) {
                 .attr('stroke', 'black');
                 
             for (var k = 0; k < data[num].length; ++k) {
-                var col = COLORS[data[num][k] % COLORS.length];
+                var col = data[num][k] % COLORS.length;
                 var ang = k * 2 * PI / data[num].length;
                 var x = Math.cos(ang) * BIG_RADIUS;
                 var y = -Math.sin(ang) * BIG_RADIUS;
@@ -39,8 +39,19 @@ function redraw_colorings(rows, columns, data) {
                     .attr('cx', cx + x)
                     .attr('cy', cy + y)
                     .attr('r', SMALL_RADIUS)
-                    .attr('fill', col)
+                    .attr('fill', COLORS[col])
                     .attr('stroke', 'black');
+                    
+                if (showColorNumbers()) {
+                    var text = g.append('text')
+                        .attr('x', cx + x)
+                        .attr('y', cy + y + TEXT_DY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', 'black')
+                        .style('font-weight', 'bold')
+                        .style('font-size', FONT_SIZE)
+                        .text('{0}'.format(col + 1));
+                }
             }            
             ++num;
             cx += MARGIN + 2 * BIG_RADIUS;
@@ -55,4 +66,4 @@ function redraw() {
     }
 }
 
-redraw_colorings(2, 3, [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], [1], [3], [2, 5]]);
+//redraw_colorings(2, 3, [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], [1], [3], [2, 5]]);

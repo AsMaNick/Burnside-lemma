@@ -10,17 +10,23 @@ if (!String.prototype.format) {
   };
 }
 
-function get_field(name) {
-	var elem = document.getElementsByName(name)[0];
-	var txt = elem.value;
-	return txt;
+function getField(id) {
+	var elem = document.getElementById(id);
+	return elem.value;
 }
 	
-function get_int_field(name) {
-	if (get_field(name) == '') {
+function getIntField(id) {
+	if (getField(id) == '') {
 		return 0;
 	}
-	return parseInt(get_field(name));
+	return parseInt(getField(id));
+}
+
+function getBigIntField(id) {
+	if (getField(id) == '') {
+		return BigInt(0);
+	}
+	return BigInt(getField(id));
 }
 
 function getScale() {
@@ -45,12 +51,24 @@ function inRange(l, r, x) {
 	return l <= x && x <= r;
 }
 
+function validateRange(l, r, x, error_id) {
+    if (!inRange(l, r, x)) {
+        showError(error_id, 'Should be integer from {0} to {1}'.format(l, r));
+        return false;
+    }
+    return true;
+}
+
 function randInt(l, r) {
 	return parseInt(d3.randomUniform(l, r)());
 }
 
 function getTask() {
 	return document.getElementById('task').value;
+}
+
+function showColorNumbers() {
+    return document.getElementById('showColorNumbers').checked;
 }
 
 var cnt_logs = 0;

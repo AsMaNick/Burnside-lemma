@@ -20,26 +20,26 @@
 				<legend>Task parameters:</legend>
 				<br>
 				
-                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'> Task: </span>
-				<select id='' size='1' style='height: 23px'>
+                <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>Task:</span>
+				<select id='task' size='1' style='height: 23px'>
 					<option>Colorings</option>
 					<option>Splittings</option>
 				</select>
                 <br>
                 <br>
                 
-                <input type='checkbox' style='width: 15px' onchange='autoRotationOchange()' id=''> Use reflections </input>
+                <input type='checkbox' style='width: 15px' onchange='onchangeReflections()' id='useReflections'>Use reflections</input>
                 <br>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>vertices:</span>
-                <input type='number' id='' style='width: 175px; height: 18px' min='2' max='100' value='4'> 
+                <input type='number' id='vertices' style='width: 175px; height: 18px' onchange='onchangeVertices()' min='2' max='100' value='4'> 
                 <br>
                 <span class='error' id='sp1'></span>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>colors:</span>
-                <input type='number' id='' style='width: 186px; height: 18px' min='2' max='100' value='3'> 
+                <input type='number' id='colors' style='width: 186px; height: 18px' onchange='onchangeColors()' min='1' max='20' value='3'> 
                 <br>
                 <span class='error' id='sp2'></span>
                 <br>
@@ -50,29 +50,33 @@
 				<br>
 				
 				<span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>show rows per page:</span>
-                <input type='number' id='' style='width: 92px; height: 18px' min='2' max='10' value='2'> 
+                <input type='number' id='rowsPerPage' style='width: 92px; height: 18px' min='2' max='10' value='2'> 
                 <br>
                 <span class='error' id='sp3'></span>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>show columns per page:</span>
-                <input type='number' id='' style='width: 67px; height: 18px' min='2' max='10' value='3'> 
+                <input type='number' id='columnsPerPage' style='width: 67px; height: 18px' min='1' max='10' value='3'> 
                 <br>
                 <span class='error' id='sp4'></span>
                 <br>
                 
                 <span style='vertical-align:top; font-size:17px; display:inline-block; margin:2px 10px 0 0;'>start from:</span>
-                <input type='number' id='' style='width: 160px; height: 18px' min='2' max='100' value='1'> 
+                <input type='number' id='startFrom' style='width: 160px; height: 18px' min='1' value='1'> 
                 <br>
                 <span class='error' id='sp5'></span>
                 <br>
                 
-				<button id='visualize_button' onclick='visualizeOnClick()'> Show </button> 
+                <input type='checkbox' style='width: 15px' onchange='onchangeShowColorNumbers()' id='showColorNumbers'>Show color numbers</input>
+                <br>
+                <br>
+                
+				<button id='showButton' onclick='showOnclick()'> Show </button> 
                 <br>
 				<span class='error' id='sp6'></span>
                 <br>
                 
-                <button id='visualize_button' onclick='visualizeOnClick()'> Next page </button> 
+                <button id='nextPageButton' onclick='nextPageOnclick()'> Next page </button> 
                 <br>
 				<span class='error' id='sp7'></span>
 			</div>
@@ -89,3 +93,4 @@
 <script type='text/javascript' src='utils.js'> </script>
 <script type='text/javascript' src='interface.js'> </script>
 <script type='text/javascript' src='graphics.js'> </script>
+<script type='text/javascript' src='logic.js'> </script>
