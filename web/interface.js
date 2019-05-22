@@ -25,8 +25,8 @@ function showOnclick() {
     rows = getIntField('rowsPerPage');
     columns = getIntField('columnsPerPage');
     
-    if (!validateRange(2, MAX_VERTICES, n, 'sp1') ||
-        !validateRange(1, MAX_COLORS, c, 'sp2') ||
+    if (!validateRange(2, 20, n, 'sp1') ||
+        !validateRange(1, 20, c, 'sp2') ||
         !validateRange(1, MAX_ROWS, rows, 'sp3') ||
         !validateRange(1, MAX_COLUMNS, columns, 'sp4')) {
     
@@ -48,7 +48,11 @@ function showOnclick() {
     for (var i = 0; i < cnt && start + i < last_generated_data.length; ++i) {
         data.push(last_generated_data[start + i]);
     }
-    redraw_colorings(rows, columns, data);
+    if (task == 'Colorings') {
+        redraw_colorings(rows, columns, data);
+    } else {
+        redraw_partitions(rows, columns, data);
+    }
 }
 
 function reflectionsOnchange() {
@@ -114,5 +118,27 @@ function prevPageOnclick() {
         }
     } else {
         showError('sp7', 'Click "Show" button first');
+    }
+}
+
+function taskOnchange() {
+    change_params = true;
+    task = getField('task');
+    if (task == 'Colorings') {
+        document.getElementById('verticesLabel').innerHTML = 'vertices:';
+        document.getElementById('colorsLabel').innerHTML = 'colors:';
+        document.getElementById('showColorNumbersLabel').innerHTML = 'Show color numbers';
+        document.getElementById('vertices').style.width = '175px';
+        document.getElementById('colors').style.width = '186px';
+        document.getElementById('vertices').value = '4';
+        document.getElementById('colors').value = '3';
+    } else {
+        document.getElementById('verticesLabel').innerHTML = 'arcs:';
+        document.getElementById('colorsLabel').innerHTML = 'total length:';
+        document.getElementById('showColorNumbersLabel').innerHTML = 'Show length of arcs';
+        document.getElementById('vertices').style.width = '201px';
+        document.getElementById('colors').style.width = '151px';
+        document.getElementById('vertices').value = '3';
+        document.getElementById('colors').value = '7';
     }
 }

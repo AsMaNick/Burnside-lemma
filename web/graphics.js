@@ -60,9 +60,65 @@ function redraw_colorings(rows, columns, data) {
     }
 }
 
+function redraw_partitions(rows, columns, data) {
+    last_type = 'partitions';
+    last_rows = rows;
+    last_columns = columns;
+    last_data = data;
+    
+    reset_svg(rows, columns);
+    var g = d3.select('body').select('svg').append('g').attr('transform', 'scale({0})'.format(getScale()));
+    var num = 0;
+    var cy = BIG_RADIUS + MARGIN;
+    for (var i = 0; i < rows; ++i) {
+        var cx = BIG_RADIUS + MARGIN;
+        for (var j = 0; j < columns; ++j) {
+            if (num >= data.length) {
+                continue;
+            }
+            var arc = d3.arc()
+                .innerRadius(BIG_RADIUS - 3 * SMALL_RADIUS)
+                .outerRadius(BIG_RADIUS);
+                
+            var pie = d3.pie()
+                .startAngle(PI / 2)
+                .endAngle(PI / 2 - 2 * PI)
+                .value(function(d) { return d; })
+                .sort(null);
+                
+            var g2 = g.append('g').attr('transform', 'translate({0}, {1})'.format(cx, cy));
+            
+            var arcs = g2.selectAll('.arc')
+                .data(pie(data[num]))
+                .enter()
+                .append('g')
+                .attr('class', 'arc')
+              
+            arcs.append('path')
+                .attr('d', arc)
+                .attr('fill', function(d) { console.log(d); return COLORS[d.index % COLORS.length] } );
+                
+                    
+            if (showColorNumbers()) {
+                arcs.append('text')
+                    .attr('transform', function(d) { return 'translate({0})'.format(arc.centroid(d)); } )
+                    .attr('text-anchor', 'middle')
+                    .style('font-size', FONT_SIZE)
+                    .style('font-weight', 'bold')
+                    .text(function(d) { return d.data; });
+            }
+            ++num;
+            cx += MARGIN + 2 * BIG_RADIUS;
+        }
+        cy += MARGIN + 2 * BIG_RADIUS;
+    }
+}
+
 function redraw() {
     if (last_type == 'colorings') {
         redraw_colorings(last_rows, last_columns, last_data);
+    } else {
+        redraw_partitions(last_rows, last_columns, last_data);
     }
 }
 
